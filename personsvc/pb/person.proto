@@ -2,7 +2,7 @@ syntax="proto3";
 
 package person;
 
-option go_package="./person-svc/pb";
+option go_package="./personsvc/pb";
 
 service PersonService {
     rpc CreatePerson(CreatePersonRequest) returns (CreatePersonResponse){} 
