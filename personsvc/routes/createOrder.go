@@ -10,21 +10,19 @@ import (
 )
 
 type CreatePersonRequestBody struct{
-	Name string `json:"name"`
-	Club string `json:"club"`
+	Name string `form:"name"`
+	Club string `form:"club"`
 }
 
 func CreatePerson(ctx *gin.Context, c pb.PersonServiceClient){
 	body := CreatePersonRequestBody{}
-
-	if  err := ctx.BindJSON(&body); err != nil {
-		ctx.AbortWithError(http.StatusBadRequest, err)
+	fmt.Print(body)
+	name := ctx.PostForm("name")
+	club := ctx.PostForm("club")
+	if  &club == nil || &name == nil  {
 		return
 	}
 
-	name , _ := ctx.Get("name")
-	
-	club , _ :=  ctx.Get("club")
 	fmt.Println(name, club)
 
 	// DB Create
