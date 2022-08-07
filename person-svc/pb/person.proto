@@ -1,0 +1,21 @@
+syntax="proto3";
+
+package person;
+
+option go_package="./person-svc/pb";
+
+service PersonService {
+    rpc CreatePerson(CreatePersonRequest) returns (CreatePersonResponse){} 
+}
+
+message CreatePersonRequest {
+    string name = 1;
+    string club = 2; 
+}
+
+message CreatePersonResponse {
+    int64 status = 1 ;
+    string error = 2;
+    string name = 11;
+    string club = 12; 
+}
